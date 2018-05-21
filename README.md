@@ -16,19 +16,19 @@ If user keep the brower stop too long,the CSRF token would expired.<br>
 > 架構說明
 ### MVC Structure,Route and Javascript file
 1. Js file
-  * ajax_with_token.js
+  * ajax_with_token.js<br>
   The custom public Ajax function that get the newest CSRF Token request each time.
   > 自定義全域JS函式，再每次Ajax之前都先再要一個新的CSRF Token。
 2. View
-  * po_check.blade
+  * po_check.blade<br>
   Using the custom js function to ajax instead default ajax function.<br>
   > 呼叫自定義全域JS函式去做Ajax的動作，而不是直接使用預設的Ajax函式。
 3. Contoller
-  * TokenController.php
+  * TokenController.php<br>
   Send the new CSRF Token request to Laravel framework.
   > 和Laravel框架要求更新CSRF Token的值<br>
 4. Route
-  * routes.php
+  * routes.php<br>
   Define a route name that helps to commuicate View and Controller.<br>
   > 定義好恰當的Route的名字，以便View與Controller溝通。<br>
   
