@@ -18,11 +18,11 @@ If user keep the brower stop too long,the CSRF token would expired.<br>
 1. Js file
   <span font-color="red">* ajax_with_token.js</span>
   The custom public Ajax function that get the newest CSRF Token request each time.
-  > 自定義全域JS函式，再每次Ajax之前都先再要一個新的CSRF Token。
+  > 自定義全域JS函式，再每次Ajax之前都先再要一個新的CSRF Token。
 2. View
   <span font-color="red">* po_check.blade</span>
   Using the custom js function to ajax instead default ajax function.<br>
-  > 呼叫自定義全域JS函式去做Ajax的動作，而不是直接使用預設的Ajax函式。
+  > 呼叫自定義全域JS函式去做Ajax的動作，而不是直接使用預設的Ajax函式。
 3. Contoller
   <span font-color="red">* TokenController.php</span>
   Send the new CSRF Token request to Laravel framework.
