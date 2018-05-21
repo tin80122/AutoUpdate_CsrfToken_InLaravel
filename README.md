@@ -1,20 +1,20 @@
 # Automatically Update CSRF Token in Laravel
 > Laravel 自動更新Csrf Token
 
-##Enviroment
-###Laravel
+## Enviroment
+### Laravel
 <a href="https://laravel.com/">Laravel Docs</a>
-###CSRF Token
+### CSRF Token
 <a href="https://laravel.com/docs/5.6/csrf">CSRF Protection</a>
 
-##Previously on Csrf Token
+## Previously on Csrf Token
 There are a verified key called CSRF Token in Laravel that communicates between View and Controller.
 If user keep the brower stop too long,the CSRF token would expired.
 > Laravel這套Framework的View與Controller之間有內建Csrf Token驗證，但是若瀏覽器停留過久，會有時效過期的問題，若Ajax的Request未特別處理，會跳出系統的錯誤訊息
 
-##Structure
+## Structure
 > 架構說明
-###MVC Structure,Route and Javascript file
+### MVC Structure,Route and Javascript file
 1. Js file
   * ajax_with_token.js
   The custom public Ajax function that get the newest CSRF Token request each time.
@@ -31,5 +31,5 @@ If user keep the brower stop too long,the CSRF token would expired.
   定義好恰當的Route的名字，以便View與Controller溝通。
   
   
-###Code Docs
+### Code Docs
 Continuing...
