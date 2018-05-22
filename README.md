@@ -36,6 +36,8 @@ If users keep the brower stop too long,the CSRF token would expired.<br>
 ### Code Docs
 
 1. View
+* po_check.blade
+
 
 	var url = "/tool/po_check/post_api";
 	var ajax_type = "POST";
@@ -83,10 +85,12 @@ If users keep the brower stop too long,the CSRF token would expired.<br>
 	};</code></pre>
 
 2. Public Javascript Function
+  * ajax_with_token.js
+
 > 自定義全域Js函式，定義好預設的參數
 <pre><code>window.bctr_token = {
-    ajax_with_token : function(url,ajax_type,data,callback_success,callback_fail,ajax_file=true,async_opt=false){...}
-    }</code></pre>
+    ajax_with_token : function(url,ajax_type,data,callback_success,callback_fail,ajax_file=true,async_opt=false){
+    </code></pre>
     
  <pre><code>   
         var content_type = 'application/x-www-form-urlencoded; charset=UTF-8';
@@ -99,7 +103,7 @@ If users keep the brower stop too long,the CSRF token would expired.<br>
  </code></pre>
    >  如果成功要到最新的Token，則更新html標籤中的token參數；失敗則回傳參數到失敗函式中。
              
-  <pre><code>			var status = res.status;
+  <pre><code>var status = res.status;
                 if(status=='success'){
                     token = res.token;
                     $('meta[name="csrf-token"]').attr('content',token);
@@ -112,7 +116,7 @@ If users keep the brower stop too long,the CSRF token would expired.<br>
                     }
  </code></pre>
  > 確認要到最新的Token後，才執行欲送出的Ajax請求事件。
-  <pre><code>	                  $.ajax({
+  <pre><code>$.ajax({
                         url:url,
                         type:ajax_type,
                         data:data,
@@ -135,6 +139,18 @@ If users keep the brower stop too long,the CSRF token would expired.<br>
         
     }
 };</code></pre>
+
+3. Controller
+* TokenController.php
+
+> <a href="https://laravel.com/docs/5.6/helpers#method-csrf-token">csrf_token()</a> 是Laravel的內建函式，用以取得最新的token值
+<pre><code>class TokenController extends Controller
+{
+    public function refresh_token()
+    {
+        return ['status'=>'success','token'=>csrf_token()];
+    }
+}</code></pre>
 
 
 
