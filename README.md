@@ -13,8 +13,9 @@ If users keep the brower stop too long,the CSRF token would expired.<br>
 > Laravel這套Framework的View與Controller之間有內建CSRFToken驗證，但是若瀏覽器停留過久，會有時效過期的問題，若Ajax的Request未特別處理，會跳出系統的錯誤訊息
 
 ## Structure
-> 架構說明
-### MVC Structure,Route and Javascript file
+MVC Structure,Route and Javascript file
+> 架構說明	
+
 1. Javascript file
   * ajax_with_token.js<br>
   The custom public Ajax function that get the newest CSRF Token request each time.
@@ -30,21 +31,19 @@ If users keep the brower stop too long,the CSRF token would expired.<br>
 4. Route
   * routes.php<br>
   Define a route name that helps to commuicate View and Controller.<br>
-	  > 定義好恰當的Route的名字，以便View與Controller溝通。<br>
+	  > 定義好恰當的Route的名字，以便View與Controller溝通。
   
-  
+<br><br><br>  
 ### Code Docs
 
 1. View
 * po_check.blade
+	var url = "/tool/po_check/post_api";<br>
+	var ajax_type = "POST";<br>
+	var data = {type:self.upload_type,val:self.inputval};<br><br>
 
-
-	var url = "/tool/po_check/post_api";
-	var ajax_type = "POST";
-	var data = {type:self.upload_type,val:self.inputval};
-
-	**Calling Custom Public Function bctr_token.ajax_with_token to Update Csrf Token before Post Ajax Request Each Time.
-	Beside,We need to define successful callback function and failure callback function first .**
+	**Calling custom public function (bctr_token.ajax_with_token) to update csrf token before posting ajax request each time.<br>
+	Beside,We need to define successful callback function and failure callback function first.**
 	> 將欲送出的Ajax Request的相關參數，EX: url、ajax_type 、成功後回傳的函式、失敗後回傳的函式等等都定義好，再根據我們自定義的全域Js函式的格式，呼叫它，完成Ajax的請求。
 
 	window.bctr_token.ajax_with_token(url,ajax_type,data,callback_success,callback_fail);
@@ -88,7 +87,7 @@ If users keep the brower stop too long,the CSRF token would expired.<br>
   * ajax_with_token.js
 
 > 自定義全域Js函式，定義好預設的參數
-<pre><code>window.bctr_token = {
+<pre><code>window.bctr_token = {<br>
     ajax_with_token : function(url,ajax_type,data,callback_success,callback_fail,ajax_file=true,async_opt=false){
     </code></pre>
     
