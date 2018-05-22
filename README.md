@@ -103,7 +103,8 @@ If users keep the brower stop too long,the CSRF token would expired.<br>
  </code></pre>
    >  如果成功要到最新的Token，則更新html標籤中的token參數；失敗則回傳參數到失敗函式中。
              
-  <pre><code>var status = res.status;
+  <pre><code>
+		var status = res.status;
                 if(status=='success'){
                     token = res.token;
                     $('meta[name="csrf-token"]').attr('content',token);
@@ -116,7 +117,8 @@ If users keep the brower stop too long,the CSRF token would expired.<br>
                     }
  </code></pre>
  > 確認要到最新的Token後，才執行欲送出的Ajax請求事件。
-  <pre><code>$.ajax({
+  <pre><code>
+		$.ajax({
                         url:url,
                         type:ajax_type,
                         data:data,
